@@ -16,6 +16,14 @@ body {
     margin-bottom: 20px;
 }
 
-.door {
-    margin-top: 10px;
+.door, .movable, #light-switch1, #light-switch4 {
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+}
+
+#objects {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
