@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     door.addEventListener('click', () => {
         if (hasKey) {
-            door.src = 'door_open.png';
+            door.src = 'images/door_open.png'; // 이 파일도 images 폴더에 있어야 합니다.
             message.textContent = 'You escaped!';
         } else {
             message.textContent = 'The door is locked. Find the key!';
