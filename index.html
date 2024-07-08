@@ -11,35 +11,37 @@
         <div id="message"></div>
         <div id="room1" class="room">
             <p>Click the light to turn it on and open the door.</p>
-            <button id="light-switch1">Light Switch</button>
-            <button id="door1" class="door">Door</button>
+            <img id="light-switch1" src="images/light_off.png" alt="Light Switch">
+            <img id="door1" class="door" src="images/door_closed.png" alt="Door">
         </div>
         <div id="room2" class="room">
             <p>Enter the 4-digit code to open the door.</p>
             <input type="text" id="code-input" maxlength="4">
-            <button id="door2" class="door">Door</button>
+            <img id="door2" class="door" src="images/door_closed.png" alt="Door">
         </div>
         <div id="room3" class="room">
             <p>Arrange the objects in the correct order to open the door.</p>
             <div id="objects">
-                <button class="movable" data-order="1">Object 1</button>
-                <button class="movable" data-order="2">Object 2</button>
-                <button class="movable" data-order="3">Object 3</button>
-                <button class="movable" data-order="4">Object 4</button>
+                <img class="movable" src="images/object1.png" data-order="1" alt="Object 1">
+                <img class="movable" src="images/object2.png" data-order="2" alt="Object 2">
+                <img class="movable" src="images/object3.png" data-order="3" alt="Object 3">
+                <img class="movable" src="images/object4.png" data-order="4" alt="Object 4">
             </div>
-            <button id="door3" class="door">Door</button>
+            <img id="door3" class="door" src="images/door_closed.png" alt="Door">
         </div>
         <div id="room4" class="room">
             <p>Click the light to open the door.</p>
-            <button id="light-switch4">Light Switch</button>
-            <button id="door4" class="door">Door</button>
+            <img id="light-switch4" src="images/light_off.png" alt="Light Switch">
+            <img id="door4" class="door" src="images/door_closed.png" alt="Door">
         </div>
         <div id="room5" class="room">
             <p>Show your hand to the webcam to open the door.</p>
             <video id="webcam" width="320" height="240" autoplay></video>
-            <button id="door5" class="door">Door</button>
+            <img id="door5" class="door" src="images/door_closed.png" alt="Door">
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
     <script src="game.js"></script>
 </body>
 </html>
