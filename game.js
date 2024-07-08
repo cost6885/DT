@@ -18,28 +18,39 @@ document.addEventListener('DOMContentLoaded', () => {
         message.textContent = '';
     }
 
+    function openDoor(doorElement, callback) {
+        doorElement.classList.add('opened');
+        setTimeout(() => {
+            callback();
+        }, 1000);
+    }
+
     document.getElementById('light-switch1').addEventListener('click', () => {
         hasLightOn1 = true;
         document.getElementById('light-switch1').src = 'images/light_on.png';
-        message.textContent = 'The light is on. Now click the door to open it.';
+        message.textContent = '전등이 켜졌습니다. 이제 문을 클릭하세요.';
     });
 
     document.getElementById('door1').addEventListener('click', () => {
         if (hasLightOn1) {
-            currentRoom++;
-            showRoom(currentRoom);
+            openDoor(document.getElementById('door1'), () => {
+                currentRoom++;
+                showRoom(currentRoom);
+            });
         } else {
-            message.textContent = 'You need to turn on the light first.';
+            message.textContent = '먼저 전등을 켜야 합니다.';
         }
     });
 
     document.getElementById('door2').addEventListener('click', () => {
         const codeInput = document.getElementById('code-input').value;
         if (codeInput === '1234') {
-            currentRoom++;
-            showRoom(currentRoom);
+            openDoor(document.getElementById('door2'), () => {
+                currentRoom++;
+                showRoom(currentRoom);
+            });
         } else {
-            message.textContent = 'Wrong code. Try again.';
+            message.textContent = '잘못된 코드입니다. 다시 시도하세요.';
         }
     });
 
@@ -47,25 +58,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const objects = Array.from(document.querySelectorAll('.movable'));
         const order = objects.map(obj => obj.dataset.order).join('');
         if (order === correctOrder) {
-            currentRoom++;
-            showRoom(currentRoom);
+            openDoor(document.getElementById('door3'), () => {
+                currentRoom++;
+                showRoom(currentRoom);
+            });
         } else {
-            message.textContent = 'Objects are in the wrong order. Try again.';
+            message.textContent = '물체의 순서가 잘못되었습니다. 다시 시도하세요.';
         }
     });
 
     document.getElementById('light-switch4').addEventListener('click', () => {
         hasLightOn4 = true;
         document.getElementById('light-switch4').src = 'images/light_on.png';
-        message.textContent = 'The light is on. Now click the door to open it.';
+        message.textContent = '전등이 켜졌습니다. 이제 문을 클릭하세요.';
     });
 
     document.getElementById('door4').addEventListener('click', () => {
         if (hasLightOn4) {
-            currentRoom++;
-            showRoom(currentRoom);
+            openDoor(document.getElementById('door4'), () => {
+                currentRoom++;
+                showRoom(currentRoom);
+            });
         } else {
-            message.textContent = 'You need to turn on the light first.';
+            message.textContent = '먼저 전등을 켜야 합니다.';
         }
     });
 
@@ -96,8 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     hands.onResults(results => {
         if (results.multiHandLandmarks.length > 0) {
-            currentRoom++;
-            showRoom(currentRoom);
+            openDoor(document.getElementById('door5'), () => {
+                currentRoom++;
+                showRoom(currentRoom);
+            });
         }
     });
 
