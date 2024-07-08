@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const rooms = document.querySelectorAll('.room');
     const message = document.getElementById('message');
     let currentRoom = 0;
+    let hasLightOn1 = false;
+    let hasLightOn4 = false;
+    let correctOrder = '1234';
 
     function showRoom(index) {
         rooms.forEach((room, i) => {
@@ -16,11 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.getElementById('light-switch1').addEventListener('click', () => {
+        hasLightOn1 = true;
+        document.getElementById('light-switch1').src = 'images/light_on.png';
         message.textContent = 'The light is on. Now click the door to open it.';
     });
 
     document.getElementById('door1').addEventListener('click', () => {
-        if (message.textContent === 'The light is on. Now click the door to open it.') {
+        if (hasLightOn1) {
             currentRoom++;
             showRoom(currentRoom);
         } else {
@@ -41,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('door3').addEventListener('click', () => {
         const objects = Array.from(document.querySelectorAll('.movable'));
         const order = objects.map(obj => obj.dataset.order).join('');
-        if (order === '1234') {
+        if (order === correctOrder) {
             currentRoom++;
             showRoom(currentRoom);
         } else {
@@ -50,11 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('light-switch4').addEventListener('click', () => {
+        hasLightOn4 = true;
+        document.getElementById('light-switch4').src = 'images/light_on.png';
         message.textContent = 'The light is on. Now click the door to open it.';
     });
 
     document.getElementById('door4').addEventListener('click', () => {
-        if (message.textContent === 'The light is on. Now click the door to open it.') {
+        if (hasLightOn4) {
             currentRoom++;
             showRoom(currentRoom);
         } else {
@@ -75,14 +82,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    webcam.addEventListener('loadeddata', () => {
-        // Dummy check for hand presence
-        message.textContent = 'Webcam is active. Show your hand to the camera to open the door.';
-        setTimeout(() => {
+    const hands = new Hands({
+        locateFile: (file) => {
+            return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+        }
+    });
+
+    hands.setOptions({
+        maxNumHands: 1,
+        minDetectionConfidence: 0.5,
+        minTrackingConfidence: 0.5
+    });
+
+    hands.onResults(results => {
+        if (results.multiHandLandmarks.length > 0) {
             currentRoom++;
             showRoom(currentRoom);
-        }, 5000);  // This is just a placeholder for hand detection logic.
+        }
     });
+
+    const camera = new Camera(webcam, {
+        onFrame: async () => {
+            await hands.send({ image: webcam });
+        },
+        width: 640,
+        height: 480
+    });
+    camera.start();
 
     showRoom(currentRoom);
     initWebcam();
