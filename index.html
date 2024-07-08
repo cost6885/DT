@@ -1,43 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape Room Game</title>
+    <title>방 탈출 게임</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="game-container">
         <div id="message"></div>
         <div id="room1" class="room">
-            <p>Click the light to turn it on and open the door.</p>
-            <img id="light-switch1" src="images/light_off.png" alt="Light Switch">
-            <img id="door1" class="door" src="images/door_closed.png" alt="Door">
+            <p>전등을 켜고 문을 클릭하세요.</p>
+            <img id="light-switch1" src="images/light_off.png" alt="전등 스위치" width="100" height="100">
+            <img id="door1" class="door" src="images/door_closed.png" alt="문" width="100" height="200">
         </div>
         <div id="room2" class="room">
-            <p>Enter the 4-digit code to open the door.</p>
+            <p>네 자리 숫자를 입력하세요.</p>
             <input type="text" id="code-input" maxlength="4">
-            <img id="door2" class="door" src="images/door_closed.png" alt="Door">
+            <img id="door2" class="door" src="images/door_closed.png" alt="문" width="100" height="200">
         </div>
         <div id="room3" class="room">
-            <p>Arrange the objects in the correct order to open the door.</p>
+            <p>물체를 올바른 순서로 정렬하세요.</p>
             <div id="objects">
-                <img class="movable" src="images/object1.png" data-order="1" alt="Object 1">
-                <img class="movable" src="images/object2.png" data-order="2" alt="Object 2">
-                <img class="movable" src="images/object3.png" data-order="3" alt="Object 3">
-                <img class="movable" src="images/object4.png" data-order="4" alt="Object 4">
+                <img class="movable" src="images/object1.png" data-order="1" alt="물체 1" width="100" height="100">
+                <img class="movable" src="images/object2.png" data-order="2" alt="물체 2" width="100" height="100">
+                <img class="movable" src="images/object3.png" data-order="3" alt="물체 3" width="100" height="100">
+                <img class="movable" src="images/object4.png" data-order="4" alt="물체 4" width="100" height="100">
             </div>
-            <img id="door3" class="door" src="images/door_closed.png" alt="Door">
+            <img id="door3" class="door" src="images/door_closed.png" alt="문" width="100" height="200">
         </div>
         <div id="room4" class="room">
-            <p>Click the light to open the door.</p>
-            <img id="light-switch4" src="images/light_off.png" alt="Light Switch">
-            <img id="door4" class="door" src="images/door_closed.png" alt="Door">
+            <p>전등을 클릭하여 문을 여세요.</p>
+            <img id="light-switch4" src="images/light_off.png" alt="전등 스위치" width="100" height="100">
+            <img id="door4" class="door" src="images/door_closed.png" alt="문" width="100" height="200">
         </div>
         <div id="room5" class="room">
-            <p>Show your hand to the webcam to open the door.</p>
+            <p>웹캠에 손바닥을 보여주세요.</p>
             <video id="webcam" width="320" height="240" autoplay></video>
-            <img id="door5" class="door" src="images/door_closed.png" alt="Door">
+            <img id="door5" class="door" src="images/door_closed.png" alt="문" width="100" height="200">
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
