@@ -33,6 +33,7 @@ body {
 }
 
 @keyframes openDoor {
-    from { transform: rotateY(0); }
-    to { transform: rotateY(90deg); }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1) translateX(200px); opacity: 0; }
 }
