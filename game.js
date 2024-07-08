@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rooms.forEach((room, i) => {
             room.style.display = (i === index) ? 'block' : 'none';
         });
+        message.textContent = '';
     }
 
     function resetGame() {
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function openDoor(doorElement, callback) {
         doorElement.classList.add('opened');
         setTimeout(() => {
+            doorElement.classList.remove('opened');
             callback();
         }, 1000);
     }
@@ -129,4 +131,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showRoom(currentRoom);
     initWebcam();
+
+    // Make objects draggable
+    document.querySelectorAll('.movable').forEach(item => {
+        item.draggable = true;
+
+        item.addEventListener('dragstart', event => {
+            event.dataTransfer.setData('text/plain', event.target.dataset.order);
+        });
+
+        item.addEventListener('dragover', event => {
+            event.preventDefault();
+        });
+
+        item.addEventListener('drop', event => {
+            event.preventDefault();
+            const draggedOrder = event.dataTransfer.getData('text/plain');
+            const targetOrder = event.target.dataset.order;
+
+            const draggedElement = document.querySelector(`[data-order='${draggedOrder}']`);
+            const targetElement = document.querySelector(`[data-order='${targetOrder}']`);
+
+            const draggedElementHTML = draggedElement.outerHTML;
+            draggedElement.outerHTML = targetElement.outerHTML;
+            targetElement.outerHTML = draggedElementHTML;
+
+            document.querySelectorAll('.movable').forEach(newItem => {
+                newItem.draggable = true;
+            });
+        });
+    });
 });
