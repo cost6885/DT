@@ -1,10 +1,11 @@
+<!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
+    <title>방 탈출 게임</title>
+    <link rel="stylesheet" href="style.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
-
 <body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
     <section>
         <div id="ending">탈출성공!!!</div>
@@ -15,7 +16,6 @@
                 3. 출구는 오른쪽에 있습니다<br><br>
                 4. javascript를 처음 배울 때 만들어서 오류가 있을 수 있습니다
             </div>
-
             <div id="zoom" onclick="clr0();">
                 <img id="zo1" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/zoom1.png">
                 <img id="zo2" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/zoom2.png">
@@ -27,7 +27,6 @@
                 <img id="zo8" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/zoom8.png">
                 <img id="zo9" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/zoom9.png">
             </div>
-
             <div id="itembox">
                 <ul id="item"><button onclick="invopen();">Item</button>
                     <li class="inv"><img id="inv1" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/keys.png" onclick="ob10();"></li>
@@ -41,7 +40,6 @@
                     <li class="inv"><img id="inv9" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/keyg.png" onclick="ob18();"></li>
                 </ul>
             </div>
-
             <div id="back">
                 <img class="clicker" id="door1" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/door1.png" onclick="ob00();">
                 <img class="clicker" id="door2" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/door2.png" onclick="ob00();">
@@ -59,12 +57,10 @@
                 <img class="clicker" id="table2" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/table2.png" onclick="ob07();">
                 <img class="clicker" id="table3" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/table3.png" onclick="ob08();">
                 <img class="clicker" id="door3" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/door3.png" onclick="ob09();">
-                <img class="clicker" src="images/.png" onclick="obj00();">
                 <img class="clicker" id="dd1" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/keysdd.png" onclick="root1();">
                 <img class="clicker" id="dd3" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/keywdd.png" onclick="root3();">
                 <img class="clicker" id="dd6" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/batterydd.png" onclick="root6();">
             </div>
-
             <div class="speech" id="spc01" onclick="clr1();">
                 <h1>???</h1>
                 <p>여긴 어디? 나는 누구?</p>
@@ -206,7 +202,6 @@
                 <p>금색 열쇠를 넣고 돌리자 문이 열린다.</p>
             </div>
         </article>
-
         <article id="control">
             <div id="pad1">
                 <div id="minimap">
@@ -216,7 +211,6 @@
                     <div id="dot"></div>
                 </div>
             </div>
-
             <div id="pad2">
                 <img id="btu" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/btu.png" width="54" height="60" onclick="bup();">
                 <img id="btl" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/btl.png" width="70" height="50" onclick="bleft();">
@@ -224,16 +218,14 @@
                 <img id="btr" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/btr.png" width="70" height="50" onclick="bright();">
                 <img id="btd" src="https://raw.githubusercontent.com/Tir-na-nog/image/master/test-room/btd.png" width="54" height="60" onclick="bdown();">
             </div>
-
             <div id="pad3">
                 <button id="hint" onclick="hint();">Hint</button>
             </div>
         </article>
-
         <footer>
             <h1 id="notice">Room v1.1<br /> KJS - 2014</h1>
         </footer>
     </section>
+    <script src="game.js"></script>
 </body>
-
 </html>
