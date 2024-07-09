@@ -223,7 +223,6 @@ section {
     top: 506px;
 }
 
-
 #itembox {
     width: 107px;
     height: 80px;
@@ -305,9 +304,6 @@ section {
     display: block;
 }
 
-
-
-
 #control {
     width: 1070px;
     height: 190px;
@@ -364,13 +360,11 @@ section {
     margin-left: 107px;
 }
 
-#btl,
-#btr {
+#btl, #btr {
     cursor: pointer;
 }
 
-#btu,
-#btd {
+#btu, #btd {
     margin: 0px 70px;
     cursor: pointer;
 }
